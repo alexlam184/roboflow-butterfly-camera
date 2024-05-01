@@ -39,14 +39,14 @@ canvas {
 
 video,
 canvas {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 }
 
 #cameraVideo:after {
   content: "";
-  position: fixed;
+  position: absolute;
   bottom: 20px;
   right: 20px;
   width: 350px;
@@ -59,7 +59,7 @@ canvas {
 }
 
 #fps {
-  position: fixed;
+  position: absolute;
   bottom: 10px;
   left: 10px;
 }

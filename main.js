@@ -188,6 +188,7 @@ $(function () {
       ctx.font = font;
       ctx.textBaseline = "top";
       ctx.fillStyle = "#000000";
+      console.log("Object detected:", prediction.class);
       ctx.fillText(
         prediction.class,
         (x - width / 2) / scale + 4,
