@@ -74,7 +74,7 @@ $(function () {
   });
 
   Promise.all([startVideoStreamPromise, loadModelPromise]).then(function () {
-    $("body").removeClass("loading");
+    $("#cameraVideo").removeClass("loading");
     resizeCanvas();
     detectFrame();
   });

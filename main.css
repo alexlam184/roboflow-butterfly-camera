@@ -7,15 +7,15 @@ body {
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-body video {
+#cameraVideo video {
   transition: filter 250ms linear;
 }
 
-body.loading video {
+#cameraVideo.loading video {
   filter: grayscale(1) brightness(0.25);
 }
 
-body.loading:before {
+#cameraVideo.loading:before {
   content: "Loading Model...";
   color: white;
   text-align: center;
@@ -44,7 +44,7 @@ canvas {
   left: 0;
 }
 
-body:after {
+#cameraVideo:after {
   content: "";
   position: fixed;
   bottom: 20px;
