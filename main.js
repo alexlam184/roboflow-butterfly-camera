@@ -13,18 +13,26 @@ $(function () {
     model: "butterfly-fhrir",
     version: 2,
   };
+  var deviceID = "161117297";
+  var oneNetApiKey = "KNUTSbBe6O5zyHYQWv=VkKiarJo=";
 
   key = urlParams.get("key");
   model = urlParams.get("model");
   version = urlParams.get("version");
+  deviceID = urlParams.get("deviceID");
+  oneNetApiKey = urlParams.get("oneNetApiKey");
 
   if (
     key &&
     model &&
     version &&
+    deviceID &&
+    oneNetApiKey &&
     key !== "" &&
     model !== "" &&
     version !== "" &&
+    deviceID !== "" &&
+    oneNetApiKey !== "" &&
     queryString !== ""
   ) {
     publishable_key = key;
@@ -32,8 +40,9 @@ $(function () {
       model: model,
       version: version,
     };
-    console.log("key=", publishable_key);
-    console.log("model=", model, "version=", version);
+    console.log("Publishable key=", publishable_key);
+    console.log("model=", model, " version=", version);
+    console.log("deviceID=", deviceID, " oneNetApiKey=", oneNetApiKey);
   } else {
     console.log("use default model");
   }
@@ -189,6 +198,7 @@ $(function () {
       ctx.textBaseline = "top";
       ctx.fillStyle = "#000000";
       console.log("Object detected:", prediction.class);
+      postToOnenet(prediction.class, deviceID, oneNetApiKey);
       ctx.fillText(
         prediction.class,
         (x - width / 2) / scale + 4,
@@ -228,3 +238,27 @@ $(function () {
       });
   };
 });
+
+function postToOnenet(butterfly_name, deviceID, apiKey) {
+  clear();
+  // Do a POST request to the test API
+  let api_url = "https://butterfly-api.vercel.app/api/butterfly";
+
+  let postData = {
+    butterfly: butterfly_name,
+    deviceID: deviceID,
+    apiKey: apiKey,
+  };
+
+  httpDo(
+    api_url,
+    "POST",
+    {
+      "Content-Type": "text/plain",
+    },
+    postData,
+    function (response) {
+      text("res=" + response, 20, 140);
+    }
+  );
+}
