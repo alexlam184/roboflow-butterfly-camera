@@ -61,10 +61,13 @@ $(function () {
       },
     })
     .then(function (stream) {
+      console.log("camera set");
       return new Promise(function (resolve) {
         video.srcObject = stream;
+        console.log("camera=", stream);
         video.onloadeddata = function () {
           video.play();
+          console.log("camera ready");
           resolve();
         };
       });
