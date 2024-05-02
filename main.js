@@ -41,8 +41,8 @@ $(function () {
       version: version,
     };
     console.log("Publishable key=", publishable_key);
-    console.log("model=", model, " version=", version);
-    console.log("deviceID=", deviceID, " oneNetApiKey=", oneNetApiKey);
+    console.log("model=", model, " ,version=", version);
+    console.log("deviceID=", deviceID, " ,oneNetApiKey=", oneNetApiKey);
   } else {
     console.log("use default model");
   }
